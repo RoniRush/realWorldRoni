@@ -18,7 +18,7 @@ export const Tag = ({ tag, isActive, onClick, isLast }: TagItemProps) => {
         //         {tag}
         //     </Text>
         // </View>
-        <Button>{tag}</Button>
+        <Button label={tag}></Button>
     );
 }
 
