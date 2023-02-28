@@ -1,4 +1,7 @@
 import * as requests from './requests';
-import {TagsResponse} from "./types";
 
-export const getTabs = (): Promise<TagsResponse> => requests.get('/tags')
+export const getTags = async (): Promise<string[]> => {
+    const res = await requests.get('/tags');
+    if (res.tags) return res.tags;
+    else return [];
+}

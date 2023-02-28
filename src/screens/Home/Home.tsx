@@ -1,10 +1,28 @@
 import {Text, View, StyleSheet} from 'react-native';
-
+import {TagsBar} from "../../components/TagsBar";
+import {useCallback, useEffect, useState} from "react";
+import {getTags} from "../../services/tags";
 
 export const Home = () => {
-    console.log('in home page')
+    const [tags, setTags] = useState<string[]>([]);
+    const [activeTag, setActiveTag] = useState<string | undefined>(undefined)
+
+    const getTagsFromServer = useCallback(async ()=> {
+        setTags(await getTags());
+    }, [tags, setTags])
+
+    useEffect(()=> {
+        getTagsFromServer();
+    },[]);
+
+    const onTagClick = useCallback((tag: string) => {
+            activeTag === tag? setActiveTag(undefined) : setActiveTag(tag);
+        },
+        [activeTag]
+    );
+
     return <View style={styles.container}>
-        <Text style={styles.title}> What</Text>
+        <TagsBar tags={tags} onTagClick={onTagClick} activeTag={activeTag}/>
     </View>
 }
 
@@ -15,7 +33,7 @@ const styles = StyleSheet.create({
     },
     title: {
         marginBottom: 12,
-        color: "#fff",
+        color: "black",
         fontSize: 22,
         fontWeight: "700",
     },
