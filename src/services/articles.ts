@@ -1,5 +1,6 @@
 import * as requests from './requests';
 import {ArticlesRequestParams, LimitParams, ResArticle} from './types';
+import {ArticleType} from "../types";
 
 const parseLimitAndOffset = (params: LimitParams): string => {
     const limit = params.limit? `limit=${params.limit}&` : '';
@@ -15,6 +16,8 @@ const parseFilterByOptions = (params: ArticlesRequestParams): string => {
     return `${tag}${author}${favorited}`;
 }
 
-export const getAllArticles = (params: LimitParams): Promise<ResArticle> => requests.get(`/articles?${parseLimitAndOffset(params)}`)
+export const getAllArticles = (params: LimitParams): Promise<ArticleType[]> => { return requests.get(`/articles?${parseLimitAndOffset(params)}`).then(response => {
+    return response.articles;
+})}
 
 export const getAllArticlesUsingFilters = (params: LimitParams): Promise<ResArticle> => requests.get(`/articles?${parseFilterByOptions(params)}${parseLimitAndOffset(params)}`)

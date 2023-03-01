@@ -1,21 +1,22 @@
 import {FlatList, StyleSheet} from "react-native";
-import {useCallback, useEffect, useState} from "react";
+import {useCallback, useEffect} from "react";
 import {Article} from "./Article";
-import {ResArticle} from "../services/types";
 import {getAllArticles} from "../services/articles";
+import {articleStore} from "../stores/articleStore";
+import {useConnect} from "remx";
 
 export const ArticlesList = () => {
-    const [articles, setArticles] = useState<ResArticle>({articles: [], articlesCount: 0});
+    const homeArticles = useConnect(()=> articleStore.getHomeArticles());
 
     const getArticlesFromServer = useCallback(async () => {
-        setArticles(await getAllArticles({}));
+        articleStore.setHomeArticles(await getAllArticles({}));
     },[])
 
     useEffect(()=> {
         getArticlesFromServer();
     },[]);
 
-    return <FlatList style={styles.container} data={articles.articles} renderItem={(article)=> {
+    return <FlatList style={styles.container} data={homeArticles} renderItem={(article)=> {
         const {title, slug, description, body, tagList, createdAt, updatedAt, favorited, favoritesCount, author} = article.item
         return <Article slug={slug} title={title} description={description} body={body} tagList={tagList} createdAt={createdAt} updatedAt={updatedAt} favorited={favorited} favoritesCount={favoritesCount} author={author}/>}}>
     </FlatList>

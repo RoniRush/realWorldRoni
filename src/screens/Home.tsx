@@ -1,8 +1,8 @@
 import {View, StyleSheet} from 'react-native';
-import {TagsBar} from "../../components/TagsBar";
+import {TagsBar} from "../components/TagsBar";
 import {useCallback, useEffect, useState} from "react";
-import {getTags} from "../../services/tags";
-import {ArticlesList} from "../../components/ArticlesList";
+import {getTags} from "../services/tags";
+import {ArticlesList} from "../components/ArticlesList";
 
 export const Home = () => {
     const [tags, setTags] = useState<string[]>([]);
