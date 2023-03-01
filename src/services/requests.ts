@@ -1,6 +1,3 @@
-// import { userStore } from "../stores";
-// import { Alert } from "react-native";
-
 export const API_URL = "https://api.realworld.io/api";
 
 const enum SupportedMethods {

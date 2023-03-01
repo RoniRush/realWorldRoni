@@ -1,7 +1,8 @@
-import {Text, View, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {TagsBar} from "../../components/TagsBar";
 import {useCallback, useEffect, useState} from "react";
 import {getTags} from "../../services/tags";
+import {ArticlesList} from "../../components/ArticlesList";
 
 export const Home = () => {
     const [tags, setTags] = useState<string[]>([]);
@@ -23,6 +24,7 @@ export const Home = () => {
 
     return <View style={styles.container}>
         <TagsBar tags={tags} onTagClick={onTagClick} activeTag={activeTag}/>
+        <ArticlesList/>
     </View>
 }
 

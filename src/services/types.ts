@@ -1,4 +1,4 @@
-import {Article} from "../types";
+import {ArticleType} from "../types";
 
 export type ResponseValue<V> = {
     value?: V;
@@ -26,10 +26,10 @@ export type TagsResponse = {
 
 
 export type ResArticle = {
-    articles: Article[];
+    articles: ArticleType[];
     articlesCount: number;
 };
 
 export type ArticleCrud = {
-    article: Article;
+    article: ArticleType;
 };

@@ -5,7 +5,7 @@ export type Author = {
     following: boolean;
 };
 
-export type Article = {
+export type ArticleType = {
     slug: string;
     title: string;
     description: string;

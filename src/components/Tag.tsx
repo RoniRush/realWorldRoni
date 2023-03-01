@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet} from "react-native";
+import {View} from 'react-native';
 import {Button} from "react-native-ui-lib";
 
 type TagItemProps = Readonly<{
@@ -10,35 +10,8 @@ type TagItemProps = Readonly<{
 
 export const Tag = ({ tag, isActive, onClick, isLast }: TagItemProps) => {
     return (
-        // <View style={[styles.item, isLast && styles.itemLast]}>
-        //     <Text
-        //         style={[styles.text, isActive && styles.activeTag]}
-        //         onPress={onClick}
-        //     >
-        //         {tag}
-        //     </Text>
-        // </View>
-        <Button label={tag}></Button>
+        <View>
+            <Button label={tag} backgroundColor={isActive? "#6666ff": "#9999ff"} onPress={onClick} size={Button.sizes.small} style={{marginLeft:6}}></Button>
+        </View>
     );
 }
-
-const styles = StyleSheet.create({
-    item: {
-        height: 26,
-        borderRadius: 13,
-        paddingVertical: 4,
-        paddingHorizontal: 6,
-        marginVertical: 4,
-        marginLeft: 8,
-        backgroundColor: "#818a91",
-    },
-    itemLast: {
-        marginRight: 8,
-    },
-    text: {
-        color: "#fff",
-    },
-    activeTag: {
-        backgroundColor: "black",
-    },
-});

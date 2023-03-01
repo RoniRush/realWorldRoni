@@ -14,7 +14,7 @@ export const screenOptions = {
         fontWeight: "700" as const,
     },
     headerStyle: {
-        backgroundColor: "#5CB85C",
+        backgroundColor: "#ccccff",
     },
 };
 

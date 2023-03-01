@@ -11,7 +11,7 @@ type TagsListProps = {
 export function TagsBar({ tags, onTagClick, activeTag }: TagsListProps) {
     return (
         <View>
-            <FlatList
+            <FlatList style={{marginTop:6, marginBottom: 6}}
                 data={tags}
                 renderItem={({ item, index }) => (
                     <Tag
