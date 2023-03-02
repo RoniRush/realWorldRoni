@@ -4,11 +4,13 @@ import {ArticleType} from "../types";
 type ArticlesState = {
     homeArticles: ArticleType[];
     chosenArticle: ArticleType | undefined;
+    filteredArticles: ArticleType[];
 };
 
 const initialState = {
     homeArticles: [],
     chosenArticle: undefined,
+    filteredArticles: [],
 };
 
 const state = remx.state<ArticlesState>(initialState);
@@ -19,7 +21,10 @@ const getters = remx.getters({
     },
     getChosenArticle() {
         return state.chosenArticle;
-    }
+    },
+    getFilteredArticles() {
+        return state.filteredArticles;
+    },
 });
 
 const setters = remx.setters({
@@ -28,7 +33,10 @@ const setters = remx.setters({
     },
     setHomeArticles(articles: ArticleType[]) {
         return state.homeArticles = articles;
-    }
+    },
+    setFilteredArticles(articles: ArticleType[]) {
+        return state.filteredArticles = articles;
+    },
 });
 
 export const articleStore = {

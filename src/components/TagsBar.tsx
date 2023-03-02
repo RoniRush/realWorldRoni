@@ -5,7 +5,7 @@ import {Tag} from "./Tag";
 type TagsListProps = {
     tags: string[];
     onTagClick?: (tag: string) => void;
-    activeTag?: string;
+    activeTag?: string | undefined;
 };
 
 export function TagsBar({ tags, onTagClick, activeTag }: TagsListProps) {
@@ -17,7 +17,6 @@ export function TagsBar({ tags, onTagClick, activeTag }: TagsListProps) {
                     <Tag
                         tag={item}
                         isActive={activeTag === item}
-                        isLast={index === tags.length - 1}
                         onClick={() => onTagClick?.(item)}
                     />
                 )}

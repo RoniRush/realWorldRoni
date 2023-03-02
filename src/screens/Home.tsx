@@ -3,10 +3,14 @@ import {TagsBar} from "../components/TagsBar";
 import {useCallback, useEffect, useState} from "react";
 import {getTags} from "../services/tags";
 import {ArticlesList} from "../components/ArticlesList";
+import {tagStore} from "../stores/tagStore";
+import {useConnect} from "remx";
 
 export const Home = () => {
     const [tags, setTags] = useState<string[]>([]);
     const [activeTag, setActiveTag] = useState<string | undefined>(undefined)
+    // @ts-ignore
+    //const activeTag = useConnect(() => tagStore.getChosenTag());
 
     const getTagsFromServer = useCallback(async ()=> {
         setTags(await getTags());
@@ -17,6 +21,7 @@ export const Home = () => {
     },[]);
 
     const onTagClick = useCallback((tag: string) => {
+            //activeTag === tag? tagStore.setChosenTag(undefined) : tagStore.setChosenTag(tag);
             activeTag === tag? setActiveTag(undefined) : setActiveTag(tag);
         },
         [activeTag]
@@ -24,7 +29,7 @@ export const Home = () => {
 
     return <View style={styles.container}>
         <TagsBar tags={tags} onTagClick={onTagClick} activeTag={activeTag}/>
-        <ArticlesList/>
+        <ArticlesList activeTag={activeTag}/>
     </View>
 }
 

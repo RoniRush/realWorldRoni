@@ -9,7 +9,7 @@ export const ChipComp = (props: chipProps) => {
     return (
         <View style={styles.chipsContainer}>
         {props.tagList?.map(tag =>
-            <Chip label={tag} key={tag} marginRight={5}></Chip>
+            <Chip backgroundColor={"#e6e6ff"} label={tag} key={tag} marginRight={5}></Chip>
         )}
     </View>)
 }
