@@ -8,10 +8,11 @@ import {useCallback} from "react";
 import {ScreenName} from "../navigation/constants";
 import {articleStore} from "../stores/articleStore";
 import {Favorites} from "./Favorites";
+import {ChipComp} from "./Chip";
 
 export const Article = (props: ArticleType) => {
     const navigation = useNavigation<NavigationPropRootStack>();
-    const {author, createdAt, title, description, slug, isMinimized, favoritesCount} = props;
+    const {author, createdAt, title, description, slug, isMinimized, favoritesCount, tagList} = props;
 
     const goToArticle = useCallback(
         () => {
@@ -28,6 +29,7 @@ export const Article = (props: ArticleType) => {
         </View>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.description}>{description}</Text>
+        {isMinimized && <ChipComp tagList={tagList}/>}
     </TouchableOpacity>)
 }
 

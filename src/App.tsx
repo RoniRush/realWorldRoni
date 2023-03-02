@@ -1,9 +1,12 @@
 import { StyleSheet } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import {Navigation} from "./navigation/Navigation";
 
 export function App() {
     return (
-        <Navigation />
+        <SafeAreaProvider>
+            <Navigation />
+        </SafeAreaProvider>
     );
 }
 
