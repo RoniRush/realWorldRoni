@@ -10,7 +10,7 @@ export type authorProps = {
 }
 
 export const Author = (props: authorProps) => {
-    const {username, image, following, date, onClick} = props;
+    const {username, image, date} = props;
     return (
         <View style={styles.container}>
             <Avatar size={40} source={{uri: image}}></Avatar>

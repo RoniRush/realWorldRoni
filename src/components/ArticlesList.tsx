@@ -18,7 +18,7 @@ export const ArticlesList = () => {
 
     return <FlatList style={styles.container} data={homeArticles} renderItem={(article)=> {
         const {title, slug, description, body, tagList, createdAt, updatedAt, favorited, favoritesCount, author} = article.item
-        return <Article slug={slug} title={title} description={description} body={body} tagList={tagList} createdAt={createdAt} updatedAt={updatedAt} favorited={favorited} favoritesCount={favoritesCount} author={author}/>}}>
+        return <Article slug={slug} title={title} description={description} body={body} tagList={tagList} createdAt={createdAt} updatedAt={updatedAt} favorited={favorited} favoritesCount={favoritesCount} author={author} isMinimized={true}/>}}>
     </FlatList>
 }
 

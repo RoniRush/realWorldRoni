@@ -16,4 +16,5 @@ export type ArticleType = {
     favorited?: boolean;
     favoritesCount?: number;
     author: Author;
+    isMinimized?: boolean;
 };
